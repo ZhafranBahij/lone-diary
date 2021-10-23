@@ -13,7 +13,7 @@ class TheDiary extends Controller
      */
     public function index()
     {
-        //
+        return view('TheDiary/display');
     }
 
     /**
@@ -23,7 +23,7 @@ class TheDiary extends Controller
      */
     public function create()
     {
-        //
+        return view('TheDiary/create');
     }
 
     /**

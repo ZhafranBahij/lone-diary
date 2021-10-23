@@ -13,7 +13,10 @@
           <a class="nav-link" href="/about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about">Let's Play</a>
+          <a class="nav-link" href="/TheDiary/create">Let's Play</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/TheDiary">Wanna See</a>
         </li>
       </ul>
     </div>
