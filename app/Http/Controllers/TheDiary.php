@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DiaryModel;
 
 class TheDiary extends Controller
 {
@@ -12,8 +13,9 @@ class TheDiary extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('TheDiary/display');
+    {   
+        $data = DiaryModel::all();
+        return view('TheDiary.display', compact('data'));
     }
 
     /**
@@ -34,7 +36,14 @@ class TheDiary extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new DiaryModel();
+        $data->title = $request->input('title');
+        $data->image = "None";
+        $data->author = $request->input('author', "Bejo");
+        $data->diary = $request->input('diary');
+        $data->save();
+
+        return redirect('/');
     }
 
     /**
