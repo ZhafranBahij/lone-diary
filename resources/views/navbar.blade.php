@@ -18,6 +18,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/TheDiary">Wanna See</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/home">Home Sweet Home</a>
+        </li>
       </ul>
     </div>
   </div>

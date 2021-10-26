@@ -3,6 +3,7 @@
 use App\Http\Controllers\view_menu;
 use App\Http\Controllers\TheDiary;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [view_menu::class, 'MainMenu']);
 Route::get('/about', [view_menu::class, 'About']);
 Route::resource('/TheDiary', TheDiary::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

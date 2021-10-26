@@ -43,7 +43,7 @@ class TheDiary extends Controller
         $data->diary = $request->input('diary');
         $data->save();
 
-        return redirect('/');
+        return redirect('/TheDiary');
     }
 
     /**
@@ -64,8 +64,10 @@ class TheDiary extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $data = DiaryModel::find($id);
+
+        return view('TheDiary/edit', compact('data'));
     }
 
     /**
@@ -77,7 +79,13 @@ class TheDiary extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = DiaryModel::find($id);
+        $data->title = $request->input('title');
+        $data->author = $request->input('author', "Bejo");
+        $data->diary = $request->input('diary');
+        $data->save();
+
+        return redirect('/TheDiary');
     }
 
     /**
@@ -88,6 +96,9 @@ class TheDiary extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = DiaryModel::find($id);
+        $data->delete();
+
+        return redirect('/TheDiary');
     }
 }
