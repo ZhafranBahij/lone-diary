@@ -101,4 +101,10 @@ class TheDiary extends Controller
 
         return redirect('/TheDiary');
     }
+
+    // for authorization
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
 }
