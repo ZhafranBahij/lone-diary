@@ -38,9 +38,13 @@ class TheDiary extends Controller
     {
         $data = new DiaryModel();
         $data->title = $request->input('title');
-        $data->image = "None";
-        $data->author = $request->input('author', "Bejo");
+        $data->image = "diary_image/diaryImage.jpg";
+        $data->author = auth()->user()->name;
         $data->diary = $request->input('diary');
+        if($request->hasFile('diary_image')){
+            $path = $request->file('diary_image')->store('public/diary_image');
+            $data->image = $path;
+        }
         $data->save();
 
         return redirect('/TheDiary');
@@ -81,7 +85,6 @@ class TheDiary extends Controller
     {
         $data = DiaryModel::find($id);
         $data->title = $request->input('title');
-        $data->author = $request->input('author', "Bejo");
         $data->diary = $request->input('diary');
         $data->save();
 

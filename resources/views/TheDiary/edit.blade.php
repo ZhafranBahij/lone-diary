@@ -13,10 +13,6 @@
       <input type="name" class="form-control" id="title" name="title" required value="{{$data->title}}">
     </div>
     <div class="mb-3">
-      <label for="author" class="form-label">Author</label>
-      <input type="name" class="form-control" id="author" name="author" required value="{{$data->author}}">
-    </div>
-    <div class="mb-3">
       <label for="diary" class="form-label">Diary</label>
       <textarea class="form-control" id="diary" name="diary" rows="6" required>{{$data->diary}}</textarea>
     </div>

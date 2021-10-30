@@ -5,19 +5,19 @@
 </head>
 <body>
   @include('navbar')
-  <form method="POST" action="/TheDiary">
+  <form method="POST" action="/TheDiary" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
       <input type="name" class="form-control" id="title" name="title" required value="Weather">
     </div>
     <div class="mb-3">
-      <label for="author" class="form-label">Author</label>
-      <input type="name" class="form-control" id="author" name="author" required value="Aoi Riki">
-    </div>
-    <div class="mb-3">
       <label for="diary" class="form-label">Diary</label>
       <textarea class="form-control" id="diary" name="diary" rows="6" required>The Weather is Nice</textarea>
+    </div>
+    <div class="mb-3">
+      <label for="diary_image" class="form-label">Image</label>
+      <input type="file" class="form-control" id="diary_image" name="diary_image" />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
