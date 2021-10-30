@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\DiaryModel;
 
 class TheDiary extends Controller
@@ -86,6 +87,13 @@ class TheDiary extends Controller
         $data = DiaryModel::find($id);
         $data->title = $request->input('title');
         $data->diary = $request->input('diary');
+        if($data->image !="diary_image/diaryImage.jpg "){
+            Storage::delete($data->image);
+        }
+        if($request->hasFile('diary_image')){
+            $path = $request->file('diary_image')->store('diary_image');
+            $data->image = $path;
+        }
         $data->save();
 
         return redirect('/TheDiary');
@@ -100,6 +108,9 @@ class TheDiary extends Controller
     public function destroy($id)
     {
         $data = DiaryModel::find($id);
+        if($data->image !="diary_image/diaryImage.jpg "){
+            Storage::delete($data->image);
+        }
         $data->delete();
 
         return redirect('/TheDiary');
