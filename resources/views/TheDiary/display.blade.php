@@ -21,6 +21,7 @@
             <h5 class="card-title">{{$item->title}}</h5>
             <p class="card-text">{{$item->diary}}</p>
             <small>{{$item->author}}</small>
+            @auth
             @if (auth()->user()->name == $item->author)
               <a href="/TheDiary/{{$item->id}}/edit" class="btn btn-warning">Edit</a>
               <form method="POST" action="/TheDiary/{{$item->id}}">
@@ -29,11 +30,16 @@
                 <button type="submit" class="btn btn-danger">Delete</button>
               </form>
             @endif
+            @endauth
           </div>
         </div>
         @endforeach
       </div>
-    </div></div>
+      <div class="d-grid justify-content-center mt-5">
+        {{ $data->links() }}
+      </div>
+    </div>
+  </div>
   </div>
 
 

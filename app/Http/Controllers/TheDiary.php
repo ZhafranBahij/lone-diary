@@ -15,7 +15,8 @@ class TheDiary extends Controller
      */
     public function index()
     {   
-        $data = DiaryModel::all();
+        // $data = DiaryModel::all();
+        $data = DiaryModel::paginate(3);
         return view('TheDiary.display', compact('data'));
     }
 
@@ -36,7 +37,11 @@ class TheDiary extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $validated = $request->validate([
+            'diary_image' => 'image|nullable',
+        ]);
+
         $data = new DiaryModel();
         $data->title = $request->input('title');
         $data->image = "diary_image/diaryImage.jpg";
@@ -44,7 +49,7 @@ class TheDiary extends Controller
         $data->diary = $request->input('diary');
         if($request->hasFile('diary_image')){
             $path = $request->file('diary_image')->store('public/diary_image');
-            $data->image = $path;
+            $data->image = str_replace("public/", "", $path);
         }
         $data->save();
 
@@ -91,8 +96,8 @@ class TheDiary extends Controller
             Storage::delete($data->image);
         }
         if($request->hasFile('diary_image')){
-            $path = $request->file('diary_image')->store('diary_image');
-            $data->image = $path;
+            $path = $request->file('diary_image')->store('public/diary_image');
+            $data->image = str_replace("public/", "", $path);
         }
         $data->save();
 
