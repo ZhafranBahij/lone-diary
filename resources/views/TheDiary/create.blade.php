@@ -19,10 +19,10 @@
           <label for="diary" class="form-label">Diary</label>
           <textarea class="form-control" id="diary" name="diary" rows="6" required>The Weather is Nice</textarea>
         </div>
-        <div class="mb-3">
+        {{-- <div class="mb-3">
           <label for="diary_image" class="form-label">Image</label>
           <input type="file" class="form-control" id="diary_image" name="diary_image" />
-        </div>
+        </div> --}}
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div></div>

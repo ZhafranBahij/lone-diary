@@ -38,19 +38,19 @@ class TheDiary extends Controller
      */
     public function store(Request $request)
     {   
-        $validated = $request->validate([
-            'diary_image' => 'image|nullable',
-        ]);
+        // $validated = $request->validate([
+        //     'diary_image' => 'image|nullable',
+        // ]);
 
         $data = new DiaryModel();
         $data->title = $request->input('title');
         $data->image = "diary_image/diaryImage.jpg";
         $data->author = auth()->user()->name;
         $data->diary = $request->input('diary');
-        if($request->hasFile('diary_image')){
-            $path = $request->file('diary_image')->store('public/diary_image');
-            $data->image = str_replace("public/", "", $path);
-        }
+        // if($request->hasFile('diary_image')){
+        //     $path = $request->file('diary_image')->store('public/diary_image');
+        //     $data->image = str_replace("public/", "", $path);
+        // }
         $data->save();
 
         return redirect('/TheDiary');
@@ -92,13 +92,13 @@ class TheDiary extends Controller
         $data = DiaryModel::find($id);
         $data->title = $request->input('title');
         $data->diary = $request->input('diary');
-        if($data->image !="diary_image/diaryImage.jpg "){
-            Storage::delete($data->image);
-        }
-        if($request->hasFile('diary_image')){
-            $path = $request->file('diary_image')->store('public/diary_image');
-            $data->image = str_replace("public/", "", $path);
-        }
+        // if($data->image !="diary_image/diaryImage.jpg "){
+        //     Storage::delete($data->image);
+        // }
+        // if($request->hasFile('diary_image')){
+        //     $path = $request->file('diary_image')->store('public/diary_image');
+        //     $data->image = str_replace("public/", "", $path);
+        // }
         $data->save();
 
         return redirect('/TheDiary');
