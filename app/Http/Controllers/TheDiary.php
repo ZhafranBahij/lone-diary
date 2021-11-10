@@ -17,7 +17,8 @@ class TheDiary extends Controller
     {   
         // $data = DiaryModel::all();
         $data = DiaryModel::paginate(3);
-        return view('TheDiary.display', compact('data'));
+        $title = "diary";
+        return view('TheDiary.display', compact('data', 'title') );
     }
 
     /**
@@ -26,8 +27,9 @@ class TheDiary extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('TheDiary/create');
+    {   
+        $title = "create";
+        return view('TheDiary/create', compact('title'));
     }
 
     /**

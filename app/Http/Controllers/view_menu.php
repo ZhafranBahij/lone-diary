@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 class view_menu extends Controller
 {
     public function MainMenu()
-    {
-        return view("landing");
+    {   
+        $title = "home";
+        return view("landing", compact('title'));
     }
     public function About()
     {

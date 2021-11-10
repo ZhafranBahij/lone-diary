@@ -6,18 +6,35 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        @if (isset($title))
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/">Home</a>
+          <a class="nav-link {{$title == "home"? 'active' : '' }}" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/TheDiary">Diary</a>
+          <a class="nav-link {{$title == "diary"? 'active' : '' }}" href="/TheDiary">Diary</a>
+        </li>
+        @auth
+        <li class="nav-item">
+          <a class="nav-link {{$title == "create"? 'active' : '' }}" href="/TheDiary/create">Let's Play</a>
+        </li>
+        @endauth
+        {{-- @endif --}}
+        @else
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/TheDiary">Diary</a>
         </li>
         @auth
         <li class="nav-item">
           <a class="nav-link" href="/TheDiary/create">Let's Play</a>
         </li>
-
         @endauth
+        @endif
+
+
+        
       </ul>
       <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->
