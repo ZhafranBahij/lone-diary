@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   @include('head')
-  <link rel="stylesheet" href="{{asset('css/landing.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/landing.css')}}">
 
 </head>
 <body>
